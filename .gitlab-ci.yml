@@ -16,7 +16,8 @@ maven-build: # đây chính là bước build file .jar mà mình đã đề c�
   stage: build
 
   script: 
-    - "./mvn clean package "
+    - "./mvn clean  "
+    - "./mnv package"
   artifacts:
     paths:
       - target/*.jar
@@ -25,8 +26,7 @@ maven-test: # run unit test của project
   image: maven:3.8.1-openjdk-17-slim
   stage: test
 
-  sript: "mvn test"
-  script: "mvnw test"
+  script: "mvn test"
   artifacts:
     paths:
       - target/*.jar
