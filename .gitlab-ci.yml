@@ -12,7 +12,7 @@ stages: # định nghĩa các bước, ở đây minhd có 3 bước tương ứ
   - docker
 
 maven-build: # đây chính là bước build file .jar mà mình đã đề cập ở bên trên
-  image: maven:3.1.5--openjdk-17-slim
+  image: maven:3.8.1--openjdk-17-slim
   stage: build
 
   script: "./mvn clean package"
@@ -21,7 +21,7 @@ maven-build: # đây chính là bước build file .jar mà mình đã đề c�
       - target/*.jar
 
 maven-test: # run unit test của project
-  image: maven:3.1.5--openjdk-17-slim
+  image: maven:3.8.1--openjdk-17-slim
   stage: test
   script: "mvnw test"
   artifacts:
