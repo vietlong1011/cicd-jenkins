@@ -15,7 +15,9 @@ maven-build: # đây chính là bước build file .jar mà mình đã đề c�
   image: maven:3.8.1-openjdk-17-slim
   stage: build
 
-  script: "./mvn clean package"
+  script: 
+    - "./mvn clean "
+    - "./mnv package"
   artifacts:
     paths:
       - target/*.jar
