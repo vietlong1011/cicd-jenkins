@@ -26,7 +26,7 @@ maven-test: # run unit test của project
   image: maven:3.8.1-openjdk-17-slim
   stage: test
 
-  sript: "mvn test"
+
   script: "mvnw test"
   artifacts:
     paths:
@@ -36,6 +36,6 @@ docker-build: # bước này sẽ build iamge từ Dockerfile và push lên dock
   stage: docker
   script:
     - docker login -u $USERNAME_DOCKER -p $PASSWORD_DOCKER # nhập tên username và password docker hub của các bạn ở đây để có quyền push
-    - docker build -t $IMAGE_NAME:1.0 . # build image, 1.0 là tag coi nó như version
-    - docker push $IMAGE_NAME:1.0 # push image docker hub sau khi build thành công
+    - docker build -t $IMAGE_NAME:1.1 . # build image, 1.0 là tag coi nó như version
+    - docker push $IMAGE_NAME:1.1 # push image docker hub sau khi build thành công
 
