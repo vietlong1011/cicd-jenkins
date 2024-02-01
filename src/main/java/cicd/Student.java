@@ -1,9 +1,10 @@
 package cicd;
 
+
+
 public class Student {
 
-    private Long id ;
-
+    private long id ;
     private String name;
     private String className;
     private int age;
@@ -14,16 +15,12 @@ public class Student {
     private int physicsScore;
     private int chemistryScore;
 
-    // Method to generate a random ID
-    private Long generateRandomId() {
-        Random random = new Random();
-        return random.nextLong();
-    }
+
     public Student() {
-        this.id = generateRandomId();
     }
 
-    public Student(String name, String className, int age, String address, int englishScore, int literatureScore, int mathScore, int physicsScore, int chemistryScore) {
+    public Student(long id ,String name, String className, int age, String address, int englishScore, int literatureScore, int mathScore, int physicsScore, int chemistryScore) {
+        this.id = id;
         this.name = name;
         this.className = className;
         this.age = age;
