@@ -1,6 +1,9 @@
 package cicd.controller;
 
 import cicd.Student;
+import cicd.User;
+import cicd.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,10 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/students")
+@RequestMapping("/api")
 public class StudentController {
 
-    @GetMapping
+    @Autowired
+    public UserRepository userRepository;
+    @GetMapping("/students")
     public List<Student> getStudents() {
         List<Student> students = new ArrayList<>();
         // Thêm các sinh viên vào danh sách
@@ -22,4 +27,10 @@ public class StudentController {
 
         return students;
     }
+
+    @GetMapping("/users")
+    public List<User> getUser() {
+        return userRepository.findAll();
+    }
+
 }
