@@ -9,15 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="890ef071-7cca-42f4-9950-4c9ce9e34160" name="Changes" comment="delete target">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cicd/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cicd/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cicd/controller/StudentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
-    </list>
+    <list default="true" id="890ef071-7cca-42f4-9950-4c9ce9e34160" name="Changes" comment="delete target" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -120,7 +112,7 @@
       <workItem from="1704353006846" duration="3046000" />
       <workItem from="1704444893469" duration="1687000" />
       <workItem from="1706516250169" duration="91000" />
-      <workItem from="1706866869666" duration="968000" />
+      <workItem from="1706866869666" duration="1700000" />
     </task>
     <task id="LOCAL-00001" summary="update lib mvn">
       <created>1698911388331</created>

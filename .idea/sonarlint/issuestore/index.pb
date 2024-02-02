@@ -47,3 +47,7 @@ Q.idea/sonarlint/securityhotspotstore/9/5/9556201778a1cef779a2a3ee57b742f718a4ef
 :
 
 apple.yaml,a\7\a719be0fc9adabe2d80cdcffd055ee7e940a8220
+a
+1src/main/java/cicd/repository/UserRepository.java,7\3\730e1cc1c4b7a20d1df22c6bf452985b3ec37851
+L
+src/main/java/cicd/User.java,0\a\0a9fc102111cdf5b81bbe94fb9bed35288e567f8
