@@ -5,6 +5,8 @@ services:
 variables:
   MYSQL_DATABASE_NAME: shop_restful
   MYSQL_ROOT_PASSWORD: 10112002
+  USERNAME_DOCKER: longlieuliny@gmail.com
+  PASSWORD_DOCKER: truongvietlong
 stages: # định nghĩa các bước, ở đây mình có 3 bước tương ứng như bên dưới
   - build
   - connect
@@ -43,5 +45,5 @@ docker-build: # bước này sẽ build image từ Dockerfile và push lên dock
   stage: docker
   script:
     - docker login -u $USERNAME_DOCKER -p $PASSWORD_DOCKER # nhập tên username và password docker hub của bạn ở đây để có quyền push
-    - docker build -t long10112002/cicd-starter:1.2 . # build image, 1.0 là tag coi nó như version
-    - docker push long10112002/cicd-starter:1.2 # push image docker hub sau khi build thành công
+    - docker build -t long10112002/cicd-starter:1.3 . # build image, 1.0 là tag coi nó như version
+    - docker push long10112002/cicd-starter:1.3 # push image docker hub sau khi build thành công
