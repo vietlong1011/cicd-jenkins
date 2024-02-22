@@ -7,8 +7,8 @@ spring:
     # url: jdbc:mysql://localhost:3306/shop_restful
     # Username: root
     # password: 10112002
-    # url: ${SPRING_DATASOURCE_URL:jdbc:mysql://172.20.16.1:3306/shop_restful?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true}
-    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://103.143.207.71:31734/shop_restful?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true}
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://172.20.16.1:3306/shop_restful?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true}
+    #url: ${SPRING_DATASOURCE_URL:jdbc:mysql://103.143.207.71:31734/shop_restful?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true}
     Username: ${SPRING_DATASOURCE_USERNAME:root}
     password: ${SPRING_DATASOURCE_PASSWORD:10112002}
   jpa:
