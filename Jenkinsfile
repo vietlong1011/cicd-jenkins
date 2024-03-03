@@ -6,7 +6,7 @@ pipeline {
         maven 'nong' 
     }
     environment {
-        MYSQL_ROOT_LOGIN = credentials('mysql-root-login')
+        MYSQL_ROOT_LOGIN = credentials('mysql')
     }
     stages {
 
