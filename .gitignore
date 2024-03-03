@@ -1,3 +1,8 @@
-pom.xml
-src/
-Jenkinsfile
+.idea/
+.mvn/
+target/
+.gitlab-ci.yml
+apple.yaml
+demo-cicd.yml
+deployment.yaml
+hs_err_pid5364.log
