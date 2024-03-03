@@ -18,42 +18,42 @@ pipeline {
             }
         }
 
-        stage('Packaging/Pushing imagae') {
+    // stage('Packaging/Pushing imagae') {
 
-            steps {
-                withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
-                    sh 'docker build -t long10112002/springboot .'
-                    sh 'docker push long10112002/springboot'
-                }
-            }
-        }
+    //         steps {
+    //             withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
+    //                 sh 'docker build -t long10112002/springboot .'
+    //                 sh 'docker push long10112002/springboot'
+    //             }
+    //         }
+    //     }
 
-        stage('Deploy MySQL to DEV') {
-            steps {
-                echo 'Deploying and cleaning'
-                sh 'docker image pull mysql:8.0'
-                sh 'docker network create dev || echo "this network exists"'
-                sh 'docker container stop nong-mysql || echo "this container does not exist" '
-                sh 'echo y | docker container prune '
-                sh 'docker volume rm nong-mysql-data || echo "no volume"'
+    //     stage('Deploy MySQL to DEV') {
+    //         steps {
+    //             echo 'Deploying and cleaning'
+    //             sh 'docker image pull mysql:8.0'
+    //             sh 'docker network create dev || echo "this network exists"'
+    //             sh 'docker container stop nong-mysql || echo "this container does not exist" '
+    //             sh 'echo y | docker container prune '
+    //             sh 'docker volume rm nong-mysql-data || echo "no volume"'
 
-                sh "docker run --name nong-mysql --rm --network dev -v nong-mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_LOGIN_PSW} -e MYSQL_DATABASE=shop_restful  -d mysql:8.0 "
-                sh 'sleep 20'
-                sh "docker exec -i nong-mysql mysql --user=root --password=${MYSQL_ROOT_LOGIN_PSW} < script"
-            }
-        }
+    //             sh "docker run --name nong-mysql --rm --network dev -v nong-mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_LOGIN_PSW} -e MYSQL_DATABASE=shop_restful  -d mysql:8.0 "
+    //             sh 'sleep 20'
+    //             sh "docker exec -i nong-mysql mysql --user=root --password=${MYSQL_ROOT_LOGIN_PSW} < script"
+    //         }
+    //     }
 
-        stage('Deploy Spring Boot to DEV') {
-            steps {
-                echo 'Deploying and cleaning'
-                sh 'docker image pull long10112002/springboot'
-                sh 'docker container stop long10112002-springboot || echo "this container does not exist" '
-                sh 'docker network create dev || echo "this network exists"'
-                sh 'echo y | docker container prune '
+    //     stage('Deploy Spring Boot to DEV') {
+    //         steps {
+    //             echo 'Deploying and cleaning'
+    //             sh 'docker image pull long10112002/springboot'
+    //             sh 'docker container stop long10112002-springboot || echo "this container does not exist" '
+    //             sh 'docker network create dev || echo "this network exists"'
+    //             sh 'echo y | docker container prune '
 
-                sh 'docker container run -d --rm --name nong-springboot -p 8081:8080 --network dev long10112002/springboot'
-            }
-        }
+    //             sh 'docker container run -d --rm --name nong-springboot -p 8081:8080 --network dev long10112002/springboot'
+    //         }
+    //     }
  
     }
     post {
