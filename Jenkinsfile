@@ -18,15 +18,16 @@ pipeline {
             }
         }
 
-    stage('Packaging/Pushing imagae') {
-
-            steps {
-                withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
-                    sh 'docker build -t long10112002/springboot .'
-                    sh 'docker push long10112002/springboot'
-                }
+    stage('Packaging/Pushing image') {
+    steps {
+        script {
+            docker.withRegistry('https://hub.docker.com', 'dockerhub') {
+                sh 'docker build -t long10112002/springboot .'
+                sh 'docker push long10112002/springboot'
             }
         }
+    }
+}
 
         stage('Deploy MySQL to DEV') {
             steps {
