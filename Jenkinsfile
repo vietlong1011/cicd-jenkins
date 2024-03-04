@@ -18,16 +18,16 @@ pipeline {
             }
         }
 
-    stage('Packaging/Pushing image') {
-    steps {
-        script {
-            docker.withRegistry('https://hub.docker.com', 'dockerhub') {
-                sh 'docker build -t long10112002/springboot:1 .'
-                sh 'docker push long10112002/springboot:1'
-            }
-        }
-    }
-}
+//     stage('Packaging/Pushing image') {
+//     steps {
+//         script {
+//             docker.withRegistry('https://hub.docker.com', 'dockerhub') {
+//                 sh 'docker build -t long10112002/springboot:1 .'
+//                 sh 'docker push long10112002/springboot:1'
+//             }
+//         }
+//     }
+// }
 
         stage('Deploy MySQL to DEV') {
             steps {
@@ -47,12 +47,12 @@ pipeline {
         stage('Deploy Spring Boot to DEV') {
             steps {
                 echo 'Deploying and cleaning'
-                sh 'docker image pull long10112002/springboot'
+                sh 'docker image pull long10112002/cicd-starter:1.3'
                 sh 'docker container stop long10112002-springboot || echo "this container does not exist" '
                 sh 'docker network create dev || echo "this network exists"'
                 sh 'echo y | docker container prune '
 
-                sh 'docker container run -d --rm --name nong-springboot -p 8081:8080 --network dev long10112002/springboot'
+                sh 'docker container run -d --rm --name nong-springboot -p 8081:8080 --network dev long10112002/cicd-starter:1.3'
             }
         }
  
