@@ -22,8 +22,8 @@ pipeline {
     steps {
         script {
             docker.withRegistry('https://hub.docker.com', 'dockerhub') {
-                sh 'docker build -t long10112002/springboot .'
-                sh 'docker push long10112002/springboot'
+                sh 'docker build -t long10112002/springboot:1 .'
+                sh 'docker push long10112002/springboot:1'
             }
         }
     }
