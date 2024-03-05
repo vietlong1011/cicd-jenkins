@@ -18,10 +18,12 @@ pipeline {
             }
         }
 
- stage('Initialize'){
-        def dockerHome = tool 'mydocker'
-        env.PATH = "${dockerHome}/bin:${env.PATH}"
-    }
+     stage('Initialize'){
+        steps{
+           def dockerHome = tool 'mydocker'
+           env.PATH = "${dockerHome}/bin:${env.PATH}"
+       }
+     }
 
     stage('Packaging/Pushing image') {
     steps {
