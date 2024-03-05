@@ -1,15 +1,15 @@
 pipeline {
-
     agent any
 
-    tools { 
-        maven 'MAVEN_HOME' 
+    tools {
+        maven 'MAVEN_HOME'
     }
+
     environment {
         MYSQL_ROOT_LOGIN = credentials('mysql')
     }
-    stages {
 
+    stages {
         stage('Build with Maven') {
             steps {
                 sh 'mvn --version'
@@ -18,23 +18,25 @@ pipeline {
             }
         }
 
-     stage('Initialize'){
-        steps{
-          def dockerHome = tool 'mydocker'
-          sh "export PATH=${dockerHome}/bin:${env.PATH}"
-       }
-     }
-
-    stage('Packaging/Pushing image') {
-    steps {
-        script {
-            docker.withRegistry('https://hub.docker.com', 'dockerhub') {
-                sh 'docker build -t long10112002/springboot:1 .'
-                sh 'docker push long10112002/springboot:1'
+        stage('Initialize') {
+            steps {
+                script {
+                    def dockerHome = tool 'mydocker'
+                    env.PATH = "${dockerHome}/bin:${env.PATH}"
+                }
             }
         }
-    }
-}
+
+        stage('Packaging/Pushing image') {
+            steps {
+                script {
+                    docker.withRegistry('https://hub.docker.com', 'dockerhub') {
+                        sh 'docker build -t long10112002/springboot:1 .'
+                        sh 'docker push long10112002/springboot:1'
+                    }
+                }
+            }
+        }
 
         stage('Deploy MySQL to DEV') {
             steps {
@@ -62,10 +64,9 @@ pipeline {
                 sh 'docker container run -d --rm --name nong-springboot -p 8081:8080 --network dev long10112002/cicd-starter:1.3'
             }
         }
- 
     }
+
     post {
-        // Clean after build
         always {
             cleanWs()
         }
