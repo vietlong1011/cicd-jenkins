@@ -78,7 +78,7 @@ pipeline {
                 sh 'docker network create dev || echo "this network exists"'
                 sh 'echo y | docker container prune '
 
-                sh 'docker container run -d --rm --name nong-$IMAGE_HUB -p 8081:8080 --network dev ${REGISTRY_REPO}/${IMAGE_HUB}:$${BUILD_NUMBER}'
+                sh 'docker container run -d --rm --name nong-$IMAGE_HUB -p 8081:8080 --network dev ${REGISTRY_REPO}/${IMAGE_HUB}:${BUILD_NUMBER}'
             }
         }
     }
