@@ -74,7 +74,7 @@ pipeline {
                 sh 'docker image pull ${REGISTRY_REPO}/${IMAGE_HUB}:${BUILD_NUMBER}'
                 // sh 'docker container stop long10112002-springboot:2 || echo "this container does not exist" '
                 //  thay vi stop ta sẽ xóa container
-                sh 'docker container rm -f ${REGISTRY_REPO}/${IMAGE_HUB}:${BUILD_NUMBER}|| echo "this container does not exist" '
+                sh 'docker container rm -f nong-$IMAGE_HUB || echo "this container does not exist"'
                 sh 'docker network create dev || echo "this network exists"'
                 sh 'echo y | docker container prune '
 
