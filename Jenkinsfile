@@ -43,16 +43,10 @@ pipeline {
         stage('Packaging/Pushing image') {
             steps {
                 script {
-            def latestTag = sh(script: "docker run --rm ${REGISTRY_REPO}/${IMAGE_HUB} sh -c 'echo \${TAG}'",
-                                returnStdout: true).trim()
-            def newTag = latestTag.toInteger() + 1
-            env.TAG = newTag.toString()
-            echo "Latest Tag: ${latestTag}"
-            echo "New Tag: ${newTag}"
                     
                      withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
-                        sh 'docker build -t ${REGISTRY_REPO}/${IMAGE_HUB}:${newTag} .'
-                        sh 'docker push ${REGISTRY_REPO}/${IMAGE_HUB}:${newTag}'
+                        sh 'docker build -t ${REGISTRY_REPO}/${IMAGE_HUB}:${CI_PIPELINE_ID} .'
+                        sh 'docker push ${REGISTRY_REPO}/${IMAGE_HUB}:${CI_PIPELINE_ID}'
                     }
                 }
             }
@@ -76,14 +70,14 @@ pipeline {
         stage('Deploy Spring Boot to DEV') {
             steps {
                 echo 'Deploying and cleaning'
-                sh 'docker image pull ${REGISTRY_REPO}/${IMAGE_HUB}:${newTag}'
+                sh 'docker image pull ${REGISTRY_REPO}/${IMAGE_HUB}:${CI_PIPELINE_ID}'
                 // sh 'docker container stop long10112002-springboot:2 || echo "this container does not exist" '
                 //  thay vi stop ta sẽ xóa container
-                sh 'docker container rm -f ${REGISTRY_REPO}/${IMAGE_HUB}:${newTag}|| echo "this container does not exist" '
+                sh 'docker container rm -f ${REGISTRY_REPO}/${IMAGE_HUB}:${CI_PIPELINE_ID}|| echo "this container does not exist" '
                 sh 'docker network create dev || echo "this network exists"'
                 sh 'echo y | docker container prune '
 
-                sh 'docker container run -d --rm --name nong-$IMAGE_HUB -p 8081:8080 --network dev ${REGISTRY_REPO}/${IMAGE_HUB}:${newTag}'
+                sh 'docker container run -d --rm --name nong-$IMAGE_HUB -p 8081:8080 --network dev ${REGISTRY_REPO}/${IMAGE_HUB}:$${CI_PIPELINE_ID}'
             }
         }
     }
