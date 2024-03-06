@@ -31,14 +31,7 @@ pipeline {
             sh "chmod -R +x $WORKSPACE/repo/$BUILD_SCRIPTS"
           }
     }
-    stage('Apt: Updates') {
-          steps {
-            sh "sudo chmod +x $WORKSPACE/repo/$BUILD_SCRIPTS/scripts/update.sh"
-            sh "sudo $WORKSPACE/repo/$BUILD_SCRIPTS/scripts/update.sh"
-          }
-    }
-
-
+   
         stage('Build with Maven') {
             steps {
                 sh 'mvn --version'
