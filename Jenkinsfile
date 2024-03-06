@@ -17,6 +17,7 @@ pipeline {
         CONTAINER_DB = 'nong-mysql'
         EMAIL = 'longlieuliny@gmail.com'
         USER_NAME = '10112002'
+        CI_PIPELINE_ID = currentBuild.number
     }
 
     stages {
